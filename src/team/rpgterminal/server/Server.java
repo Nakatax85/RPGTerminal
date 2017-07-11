@@ -7,15 +7,20 @@ import team.rpgterminal.cliente.ClientLauncher;
  */
 public class Server {
 
-    public void startConnection(){
+
+    public void launch(String hostname, int port) {
 
     }
 
-    public void closeClientConnection(){
+    private void startConnection(){
 
     }
 
-    public void watchClient(ClientLauncher client){
+    private void closeClientConnection(){
+
+    }
+
+    private void watchClient(ClientLauncher client){
 
     }
 }
