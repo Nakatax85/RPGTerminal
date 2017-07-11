@@ -5,6 +5,7 @@ import team.rpgterminal.game.nonplayables.Item;
 
 public class Player implements Playable {
 
+
     private String name;
     private int health = 100;
     private boolean dead;
@@ -31,8 +32,10 @@ public class Player implements Playable {
         if (!destructible.isDestroyed()) {
             try {
 
-                System.out.println("You are attaking...");
+                System.out.println("You are attacking...");
                 Thread.sleep(1000);
+
+                //TODO: Logic to attack here
                 System.out.println("attacked");
 
             } catch (InterruptedException e) {
@@ -119,8 +122,8 @@ public class Player implements Playable {
             return false;
         }
         System.out.println("You are dead! GAME OVER!");
+        System.exit(1);
         return true;
-
     }
 
     @Override

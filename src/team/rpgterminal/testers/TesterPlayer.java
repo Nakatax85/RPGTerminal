@@ -10,6 +10,11 @@ public class TesterPlayer {
         Player player = new Player("Mário");
         Enemy enemy = new Enemy();
 
+        System.out.println(player.toString());
+        System.out.println();
+
+        System.out.printf("My name is " + player.getName() + "\n");
+
         player.move(Player.Directions.BACK);
         player.move(Player.Directions.FORWARD);
         player.move(Player.Directions.LEFT);
@@ -30,7 +35,5 @@ public class TesterPlayer {
         player.defend();
 
         player.attack(enemy);
-
-        System.out.println(player.toString());
     }
 }
