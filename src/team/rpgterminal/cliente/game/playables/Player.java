@@ -1,6 +1,6 @@
-package team.rpgterminal.game.playables;
+package team.rpgterminal.cliente.game.playables;
 
-import team.rpgterminal.game.nonplayables.Item;
+import team.rpgterminal.cliente.game.nonplayables.Item;
 
 /**
  * Created by codecadet on 10/07/2017.

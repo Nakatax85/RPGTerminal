@@ -1,9 +1,9 @@
-package team.rpgterminal.network;
+package team.rpgterminal.cliente;
 
 /**
  * Created by codecadet on 10/07/2017.
  */
-public class Client {
+public class ClientLauncher {
 
     public void login(){
 

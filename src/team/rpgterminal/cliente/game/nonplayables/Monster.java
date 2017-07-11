@@ -1,4 +1,4 @@
-package team.rpgterminal.game.nonplayables;
+package team.rpgterminal.cliente.game.nonplayables;
 
 /**
  * Created by codecadet on 10/07/2017.

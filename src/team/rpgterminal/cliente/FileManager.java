@@ -1,4 +1,4 @@
-package team.rpgterminal.network;
+package team.rpgterminal.cliente;
 
 import java.io.File;
 

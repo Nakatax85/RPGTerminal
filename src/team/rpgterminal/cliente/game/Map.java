@@ -1,4 +1,4 @@
-package team.rpgterminal.game;
+package team.rpgterminal.cliente.game;
 
 /**
  * Created by codecadet on 10/07/2017.

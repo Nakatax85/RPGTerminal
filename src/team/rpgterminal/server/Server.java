@@ -1,4 +1,6 @@
-package team.rpgterminal.network;
+package team.rpgterminal.server;
+
+import team.rpgterminal.cliente.ClientLauncher;
 
 /**
  * Created by codecadet on 10/07/2017.
@@ -13,7 +15,7 @@ public class Server {
 
     }
 
-    public void watchClient(Client client){
+    public void watchClient(ClientLauncher client){
 
     }
 }

@@ -1,9 +1,11 @@
-package team.rpgterminal.game.nonplayables;
+package team.rpgterminal.cliente.game.nonplayables;
 
 /**
  * Created by codecadet on 10/07/2017.
  */
-public class NonPlayableCharacter implements Destructible{
+public class GameObjects implements Destructible{
+
+
     @Override
     public int hits() {
         return 0;
@@ -12,5 +14,9 @@ public class NonPlayableCharacter implements Destructible{
     @Override
     public boolean isDestroyed() {
         return false;
+    }
+
+    public void postAlert(String message){
+
     }
 }
