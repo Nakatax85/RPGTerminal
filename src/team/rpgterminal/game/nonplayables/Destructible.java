@@ -5,6 +5,6 @@ package team.rpgterminal.game.nonplayables;
  */
 public interface Destructible {
 
-    int hits();
+    int hit(int attackPower);
     boolean isDestroyed();
 }

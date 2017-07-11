@@ -6,8 +6,9 @@ package team.rpgterminal.game.nonplayables;
 public class GameObjects implements Destructible{
 
 
+
     @Override
-    public int hits() {
+    public int hit(int attackPower) {
         return 0;
     }
 

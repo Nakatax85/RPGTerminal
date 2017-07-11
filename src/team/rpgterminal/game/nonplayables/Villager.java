@@ -3,11 +3,19 @@ package team.rpgterminal.game.nonplayables;
 /**
  * Created by codecadet on 10/07/2017.
  */
-public class Villager extends NonPlayableCharacter {
+public class Villager implements Destructible {
 
     public Villager() {
-        super();
+
     }
 
+    @Override
+    public int hit(int attackPower) {
+        return attackPower;
+    }
 
+    @Override
+    public boolean isDestroyed() {
+        return false;
+    }
 }
