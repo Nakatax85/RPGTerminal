@@ -4,6 +4,9 @@ package team.rpgterminal.server;
  * Created by codecadet on 12/07/17.
  */
 
+/**
+ * List of Server Commands
+ */
 public enum ServerCommands {
     PM("/pm"),
     KICK("/kick");
@@ -15,6 +18,12 @@ public enum ServerCommands {
         this.command = command;
     }
 
+    /**
+     * Determines which Server Command is at stake
+     *
+     * @param command           String command
+     * @return                  ServerCommands
+     */
     public static ServerCommands whichCommand(String command) {
 
         switch (command) {
@@ -27,6 +36,15 @@ public enum ServerCommands {
 
         }
         return null;
+
+    }
+
+    public static void listCommands() {
+
+        for (ServerCommands sc : ServerCommands.values()) {
+
+            System.out.println(sc);
+        }
 
     }
 

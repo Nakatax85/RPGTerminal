@@ -5,7 +5,7 @@ package team.rpgterminal.cliente.game.playableCharacters;
  */
 
 /**
- * List of player commands
+ * List of Player Commands
  */
 public enum PlayerCommands {
     CD("cd"),
@@ -23,6 +23,12 @@ public enum PlayerCommands {
         this.command = command;
     }
 
+    /**
+     * Determines which Player Command is at stake
+     *
+     * @param command           String command
+     * @return                  PlayerCommands
+     */
     public static PlayerCommands whichCommand(String command) {
 
         switch (command) {
@@ -54,6 +60,15 @@ public enum PlayerCommands {
         }
 
         return null;
+
+    }
+
+    public static void listCommands() {
+
+        for (PlayerCommands pc : PlayerCommands.values()) {
+            System.out.println(pc);
+
+        }
 
     }
 
