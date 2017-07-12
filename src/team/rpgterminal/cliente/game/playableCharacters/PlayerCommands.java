@@ -24,7 +24,36 @@ public enum PlayerCommands {
     }
 
     public static PlayerCommands whichCommand(String command) {
-        return PlayerCommands.valueOf(command);
+
+        switch (command) {
+
+            case "cd":
+                return CD;
+
+            case "ls":
+                return LS;
+
+            case "pick":
+                return PICK;
+
+            case "map":
+                return MAP;
+
+            case "inv":
+                return INVENTORY;
+
+            case "attack":
+                return ATTACK;
+
+            case "defend":
+                return DEFEND;
+
+            case "interact":
+                return INTERACT;
+
+        }
+
+        return null;
 
     }
 
