@@ -9,7 +9,7 @@ public class TestSecurity {
         TestSecurity test = new TestSecurity();
 
         test.assertCondition("Hostname is valid: ", test.testOne());
-        test.assertCondition("Port is a valid port: ", test.testTwo());
+        test.assertCondition("Port is valid: ", test.testTwo());
 
     }
 
@@ -35,12 +35,14 @@ public class TestSecurity {
             return false;
         }
 
-        if(!Security.validateHostname("10.10.10.10")) {
+        hostname = "10.10.10.10";
+        if(!Security.validateHostname(hostname)) {
             assertCondition(hostname + " is valid: ", false);
             return false;
         }
 
-        if(!Security.validateHostname("localhost")) {
+        hostname = "localhost";
+        if(!Security.validateHostname(hostname)) {
             assertCondition(hostname + " is valid: ", false);
             return false;
         }
@@ -66,6 +68,10 @@ public class TestSecurity {
         }
 
         if(Security.validatePort("124124")) {
+            return false;
+        }
+
+        if(!Security.validatePort("6969")) {
             return false;
         }
 

@@ -1,5 +1,11 @@
 package team.rpgterminal.server.tools;
 
+/**
+ * Security helper class that has some essential methods to validate hostname and port and a method to hash a password
+ *
+ * @author H4x0R
+ * @see <a href="joaowritecode.github.io">H4x0R Github</a>
+ */
 public final class Security {
 
     /**
@@ -55,11 +61,11 @@ public final class Security {
      * it encrypts the hash of the password received again with a different encryption algorithm.
      *
      * @param password
-     * @return
+     * @return doubleHashedPassword
      */
     public static String hashPassword(String password) {
 
-        return "Security"
+        return "Security";
 
     }
 
