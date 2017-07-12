@@ -1,10 +1,10 @@
-package team.rpgterminal.cliente.game.nonplayables;
+package team.rpgterminal.cliente.game;
 
 /**
  * Created by codecadet on 10/07/2017.
  */
 public interface Destructible {
 
-    int hits();
+    int hit(int attackPower);
     boolean isDestroyed();
 }

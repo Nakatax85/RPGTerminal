@@ -1,4 +1,4 @@
-package team.rpgterminal.cliente.game.playables;
+package team.rpgterminal.cliente.game.playableCharacters;
 
 /**
  * Created by codecadet on 10/07/2017.

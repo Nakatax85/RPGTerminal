@@ -1,4 +1,4 @@
-package team.rpgterminal.cliente.game.nonplayables;
+package team.rpgterminal.cliente.game;
 
 /**
  * Created by codecadet on 10/07/2017.
@@ -6,8 +6,9 @@ package team.rpgterminal.cliente.game.nonplayables;
 public class GameObjects implements Destructible{
 
 
+
     @Override
-    public int hits() {
+    public int hit(int attackPower) {
         return 0;
     }
 
