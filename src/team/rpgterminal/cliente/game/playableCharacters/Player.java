@@ -113,7 +113,7 @@ public class Player implements Playable {
     }
 
 
-    // TODO: IT's a multiplayer game if you die you restart you don't close the client! FIX!
+    // TODO: IT's a multiplayer game if you die you restart you don't close the client!
     /**
      * @return if player is dead or not
      */
