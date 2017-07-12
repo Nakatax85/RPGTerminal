@@ -13,6 +13,10 @@ public class EnemyFactory {
     private int randomNumber;
     private Enemy enemy;
 
+    /**
+     * It creates an enemy of random types.
+     * @return enemy
+     */
     public Enemy createEnemy() {
         EnemyType enemyType = null;
         randomNumber = RandomNumber.generate(0,5);
