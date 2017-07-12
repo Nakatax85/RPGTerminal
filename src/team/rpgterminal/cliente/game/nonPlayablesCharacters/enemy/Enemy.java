@@ -17,7 +17,6 @@ public class Enemy implements Destructible {
         health = enemyType.getMaxHits();
         shield = enemyType.getShield();
         attackPower = enemyType.getAttackPower();
-
     }
 
     public void attack() {
