@@ -14,9 +14,9 @@ public class TestSecurity {
     }
 
     /**
-     * Test Security methods:
+     * Test whether or not the hostname is valid
      *
-     * if any of the tests go wrong then the method should be refactored
+     * if any of the tests go wrong then the method validateHostname should be refactored
      *
      * @return boolean
      */
@@ -48,6 +48,13 @@ public class TestSecurity {
         return true;
     }
 
+    /**
+     * Test whether or not the port number is valid
+     *
+     * if any of these tests go wrong then the method validatePort should be refactored
+     *
+     * @return
+     */
     public boolean testTwo() {
 
         if(Security.validatePort("")) {
