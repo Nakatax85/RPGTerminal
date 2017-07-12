@@ -25,7 +25,7 @@ public class TesterPlayer {
 
         player.isDead();
 
-        player.setHealth(0);
+        player.setHealth(9);
 
         player.isDead();
 

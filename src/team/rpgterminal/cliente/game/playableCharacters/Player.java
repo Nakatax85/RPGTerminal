@@ -2,52 +2,47 @@ package team.rpgterminal.cliente.game.playableCharacters;
 
 import team.rpgterminal.cliente.game.Destructible;
 import team.rpgterminal.cliente.game.items.Item;
+import team.rpgterminal.cliente.game.tools.RandomNumber;
 
 public class Player implements Playable {
 
-
+    // TODO: List of itens that are loaded
+    // TODO: List of gear that is being used
     private String name;
     private int health = 100;
     private boolean dead;
-    private int level;
+    private int playerDamage = 5;
+    private int causedDamage;
+    private int basicDefense;
 
     public Player(String name) {
         this.name = name;
         this.dead = false;
-        this.level = 1;
     }
 
-    public void listItems() {
-
-
-    }
-
-    public void useGear(Item item) {
-
-
-    }
-
+    /**
+     *
+     * Player attacks and sets a casedDamage to be accessed by the Game
+     *
+     * @param destructible
+     */
     public void attack(Destructible destructible) {
 
         if (!destructible.isDestroyed()) {
-            try {
 
-                // TODO: FIX: GAME DOES NOT STOP, SIMPLY ATTACK AND BE DONE WITH IT
-                System.out.println("You are attacking...");
-                Thread.sleep(1000);
-
-                //TODO: Logic to attack here
-                System.out.println("attacked");
-
-            } catch (InterruptedException e) {
-                System.out.println("Something really bad happened, please try again: " + e);
-            }
+            causedDamage = RandomNumber.generate(1, playerDamage);
+            System.out.println("You have attacked. Damage taken was: " + causedDamage);
 
         } else {
             System.out.println("Enemy is already dead");
         }
     }
 
+    /**
+     *
+     * Player defend method from Destructible
+     *
+     */
     public void defend() {
 
         if (getHealth() <= 0) {
@@ -62,7 +57,6 @@ public class Player implements Playable {
      *
      * @param direction where player can move
      */
-
     public void move(Directions direction) {
 
         switch (direction) {
@@ -81,19 +75,35 @@ public class Player implements Playable {
         }
     }
 
+    /**
+     * List what is on Player Zone
+     */
     public void lookAround() {
 
         // Comando que retorna lista de objectos a volta
 
     }
 
+    /**
+     * Interact with Zone
+     */
     public void interact() {
 
         // Recebe lista de lookAround para poder interagir
 
     }
 
-    // ONLY FOR TEST... AFTER TESTS FUCK IT
+    /**
+     * see Player inventory
+     */
+    public void listItems() { }
+
+    /**
+     * Interact with Item and set it to use
+     * @param item
+     */
+    public void useGear(Item item) { }
+
     public void setHealth(int health) {
         this.health = health;
     }
@@ -112,8 +122,6 @@ public class Player implements Playable {
         return null;
     }
 
-
-    // TODO: IT's a multiplayer game if you die you restart you don't close the client!
     /**
      * @return if player is dead or not
      */
@@ -125,9 +133,24 @@ public class Player implements Playable {
             return false;
         }
         System.out.println("You are dead! GAME OVER!");
-        System.exit(1);
+        resetPlayer();
         return true;
     }
+
+    private void resetPlayer() {
+        setHealth(100);
+        setDead(false);
+    }
+
+    /**
+     * When player is dead, set it to true
+     *
+     * @param dead
+     */
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
 
     @Override
     public String toString() {
@@ -135,10 +158,14 @@ public class Player implements Playable {
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", dead=" + dead +
-                ", level=" + level +
                 '}';
     }
 
+    /**
+     *
+     * What directions are available for players to take
+     *
+     */
     public enum Directions {
         FORWARD("forward"),
         BACK("back"),
