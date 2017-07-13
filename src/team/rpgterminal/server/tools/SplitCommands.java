@@ -1,14 +1,17 @@
 package team.rpgterminal.server.tools;
 
 /**
- * Created by codecadet on 13/07/17.
+ * This class is a String splitter
  */
-
 public class SplitCommands {
 
     private String[] command;
     private String text = "";
 
+    /**
+     * Splits a String depending on the input
+     * @param command    String type
+     */
     public void split(String command) {
 
         if (command.equals("") || (command.trim().isEmpty())) {
@@ -25,6 +28,10 @@ public class SplitCommands {
 
     }
 
+    /**
+     * Returns a command
+     * @return          String type
+     */
     public String getCommand() {
 
         if (command == null) {
@@ -34,6 +41,10 @@ public class SplitCommands {
         return command[0];
     }
 
+    /**
+     * Returns an Action
+     * @return          String type
+     */
     public String getActionCommand() {
 
         if (command.length == 1) {
@@ -43,6 +54,10 @@ public class SplitCommands {
         return command[1];
     }
 
+    /**
+     * Returns a phrase
+     * @return          String type
+     */
     public String getText() {
 
         for (int i = 1; i < command.length; i++) {
