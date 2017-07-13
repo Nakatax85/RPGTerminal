@@ -2,11 +2,9 @@ package team.rpgterminal.cliente.game.items;
 
 import team.rpgterminal.cliente.game.GameObjects;
 
-/**
- * Created by codecadet on 10/07/2017.
- */
 public class Item extends GameObjects {
 
+    private String name;
     private int maxDamage;
     private int maxDefense;
 
@@ -14,9 +12,26 @@ public class Item extends GameObjects {
         super();
     }
 
-    public void damage(){
-
+    public int getMaxDamage() {
+        return maxDamage;
     }
 
-
+    public int getMaxDefense() {
+        return maxDefense;
+    }
+    
 }
+
+
+/*
+
+Item types [armour]:
+ -> Helmet
+ -> Chestplate
+ -> Leggings
+ -> Boots
+
+ -> Sword
+ -> Shield
+
+ */
