@@ -6,6 +6,7 @@ import team.rpgterminal.server.ServerCommands;
 /**
  * Created by codecadet on 12/07/17.
  */
+
 public class TesterCommands {
 
     public static void main(String[] args) {
