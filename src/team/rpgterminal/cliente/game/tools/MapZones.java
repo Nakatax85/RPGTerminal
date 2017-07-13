@@ -31,62 +31,6 @@ public enum MapZones {
         this.zone = zone;
     }
 
-    public static MapZones whichZone(String zone) {
 
-        switch (zone) {
-
-            case "Home":
-                return HOME;
-
-            case "Forest":
-                return FOREST;
-
-            case "Tree of Life":
-                return TREE_OF_LIFE;
-
-            case "River Flow":
-                return RIVER_FLOW;
-
-            case "Cataract Falls":
-                return CATARACT_FALLS;
-
-            case "Mountain":
-                return MOUNTAIN;
-
-            case "Snow Fall":
-                return SNOW_FALL;
-
-            case "Icy Peak":
-                return ICY_PEAK;
-
-            case "Mount Neverlast":
-                return MOUNT_NEVERLAST;
-
-            case "Plain":
-                return PLAIN;
-
-            case "Cliff Eastwood":
-                return CLIFF_EASTWOOD;
-
-            case "Elephant Cemetery":
-                return ELEPHANT_CEMETERY;
-
-            case "Death End":
-                return DEATH_END;
-
-            case "Volcano Hole":
-                return VOLCANO_HOLE;
-
-            case "The Forge":
-                return THE_FORGE;
-
-            case "Castle of Flames":
-                return CASTLE_OF_FLAMES;
-
-        }
-
-        return null;
-
-    }
 
 }
