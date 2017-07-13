@@ -12,6 +12,11 @@ public class Enemy implements Destructible {
     private int health;
     private int attackPower;
 
+    /**
+     * Constructs an Enemy from a specified type.
+     * @param enemyType
+     */
+
     public Enemy(EnemyType enemyType) {
         this.enemyType = enemyType;
         health = enemyType.getMaxHits();
@@ -19,6 +24,9 @@ public class Enemy implements Destructible {
         attackPower = enemyType.getAttackPower();
     }
 
+    /**
+     * It calls the method that prints out an attack message and causes damage to players.
+     */
     public void attack() {
         if (enemyType == null) {
             System.out.println("The enemy you seek does not exist.");
@@ -28,16 +36,28 @@ public class Enemy implements Destructible {
         damage();
     }
 
+    /**
+     * It prints out an attack message from a specific enemy type, with a specific attack power.
+     */
+
     public void getAttackMessage() {
         System.out.println(enemyType.getSymbol() + " has attacked you, causing you " + enemyType.getAttackPower() + " damage points.");
     }
+
+    /**
+     * It prints out a defense message.
+     */
 
     public void getDefendMessage() {
         System.out.println(enemyType.getSymbol() + " defended your attack, using its shield.");
     }
 
+    /**
+     * It calls the method that prints a defense message and takes health from the enemy.
+     * It also verifies if the shield has been destroyed or not and causes damage to the enemy if it is destroyed.
+     */
     public void defend() {
-        int sufferedDamage;
+
         if (!isDestroyed()) {
             shield -= hit(4);
             if (shield > 0) {
@@ -49,6 +69,11 @@ public class Enemy implements Destructible {
         }
     }
 
+    /**
+     * It takes health from the enemy and verifies if the enemy has been destroyed.
+     * @param hits
+     */
+
     public void takeHealth(int hits) {
         this.health -= hits;
 
@@ -59,20 +84,38 @@ public class Enemy implements Destructible {
         }
     }
 
+    /**
+     * It shows the current health the enemy has.
+     * @return int health
+     */
+
     public int getHealth() {
         return health;
     }
 
+    /**
+     *
+     * @param attackPower
+     * @return int attackPower
+     */
     @Override
     public int hit(int attackPower) {
         return attackPower;
     }
 
+    /**
+     * It verifies if enemy is dead.
+     * @return boolean
+     */
     @Override
     public boolean isDestroyed() {
         return getHealth() < 1 ? true : false;
     }
 
+    /**
+     * It causes the amount of damage equal to the specific enemy type attacking power.
+     * @return
+     */
     public int damage() {
         return enemyType.getAttackPower();
     }

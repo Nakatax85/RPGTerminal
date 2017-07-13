@@ -10,45 +10,37 @@ import java.util.List;
  */
 public class EnemyFactory {
 
-    // TODO: FACTORY RETURNS ONE ENEMY, DOES NOT NEED TO HAVE A LIST
-    private List<Enemy> enemyList = new ArrayList<>();
-    private int randomNumber = RandomNumber.generate(0, 4);
+    private int randomNumber;
     private Enemy enemy;
 
+    /**
+     * It creates an enemy of random types.
+     * @return enemy
+     */
     public Enemy createEnemy() {
-        EnemyType enemyType;
-
+        EnemyType enemyType = null;
+        randomNumber = RandomNumber.generate(0,5);
 
         switch (randomNumber) {
             case 0:
-                enemyType = EnemyType.MONSTER;
-                enemyList.add(new Enemy(enemyType));
-                enemy = enemyList.get(enemyList.lastIndexOf(enemyType));
-                System.out.println("A "+ enemyType.getSymbol()+" appears.");
+                enemy = new Enemy(enemyType = EnemyType.MONSTER);
+                System.out.println("A " + enemyType.getSymbol() + " appears.");
                 break;
             case 1:
-                enemyType = EnemyType.DRAGON;
-                enemyList.add(new Enemy(enemyType));
-                enemy = enemyList.get(enemyList.lastIndexOf(enemyType));
-                System.out.println("A "+ enemyType.getSymbol()+" appears.");
+                enemy = new Enemy(enemyType = EnemyType.DRAGON);
+                System.out.println("A " + enemyType.getSymbol() + " appears.");
                 break;
             case 2:
-                enemyType = EnemyType.DWARF;
-                enemyList.add(new Enemy(enemyType));
-                enemy = enemyList.get(enemyList.lastIndexOf(enemyType));
-                System.out.println("A "+ enemyType.getSymbol()+" appears.");
+                enemy = new Enemy(enemyType = EnemyType.DWARF);
+                System.out.println("A " + enemyType.getSymbol() + " appears.");
                 break;
             case 3:
-                enemyType = EnemyType.ELF;
-                enemyList.add(new Enemy(enemyType));
-                enemy = enemyList.get(enemyList.lastIndexOf(enemyType));
-                System.out.println("An "+ enemyType.getSymbol()+" appears.");
+                enemy = new Enemy(enemyType = EnemyType.ELF);
+                System.out.println("An " + enemyType.getSymbol() + " appears.");
                 break;
             case 4:
-                enemyType = EnemyType.MERCENARY;
-                enemyList.add(new Enemy(enemyType));
-                enemy = enemyList.get(enemyList.lastIndexOf(enemyType));
-                System.out.println("A "+ enemyType.getSymbol()+" appears.");
+                enemy = new Enemy(enemyType = EnemyType.MERCENARY);
+                System.out.println("A " + enemyType.getSymbol() + " appears.");
                 break;
             default:
                 System.out.println("Something amazing will happen eventually");

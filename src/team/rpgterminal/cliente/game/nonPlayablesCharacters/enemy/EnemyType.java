@@ -15,6 +15,13 @@ public enum EnemyType {
     private int attackPower;
     private int shield;
 
+    /**
+     * Constructs the enemy type enum.
+     * @param symbol
+     * @param maxHits
+     * @param attackPower
+     * @param shield
+     */
     EnemyType(String symbol, int maxHits, int attackPower, int shield) {
         this.symbol = symbol;
         this.maxHits = maxHits;
@@ -22,18 +29,34 @@ public enum EnemyType {
         this.shield = shield;
     }
 
+    /**
+     * It gets the symbol from a specific enemy type.
+     * @return string - symbol
+     */
     public String getSymbol() {
         return symbol;
     }
 
+    /**
+     * It gets the maximum number of hits a enemy can take before dying.
+     * @return int - max number of hits
+     */
     public int getMaxHits() {
         return maxHits;
     }
 
+    /**
+     * It gets the attacking power of a specific enemy type.
+     * @return int - attacking power
+     */
     public int getAttackPower() {
         return attackPower;
     }
 
+    /**
+     * It gets the shield protection from a specific enemy type-
+     * @return int - shield
+     */
     public int getShield() {
         return shield;
     }
