@@ -34,8 +34,10 @@ public class TesterEnemies {
 
         System.out.println("TESTING ENEMY FACTORY");
 
-        for (int i = 0; i < 7; i++) {
-            enemyFactory.createEnemy();
-        }
+
+            enemyFactory.createDwarf();
+            enemyFactory.createDragon();
+            enemyFactory.createElf();
+
     }
 }
