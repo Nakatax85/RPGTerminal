@@ -30,9 +30,7 @@ public class Item extends GameObjects {
     @Override
     public String toString() {
         return "Item{" +
-                "name='" + name + '\'' +
-                ", bonus=" + bonus +
-                ", itemType=" + itemType +
+                "name='" + name +
                 '}';
     }
 }

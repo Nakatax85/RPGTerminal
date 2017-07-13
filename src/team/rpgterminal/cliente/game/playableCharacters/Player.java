@@ -187,10 +187,14 @@ public class Player implements Playable {
 
     @Override
     public String toString() {
-        return "Player information{" +
+        return "Player{" +
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", dead=" + dead +
+                ", playerDamage=" + playerDamage +
+                ", causedDamage=" + causedDamage +
+                ", basicDefense=" + basicDefense +
+                ", inventory=" + inventory +
                 '}';
     }
 
