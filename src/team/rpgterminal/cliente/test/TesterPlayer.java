@@ -1,5 +1,7 @@
 package team.rpgterminal.cliente.test;
 
+import team.rpgterminal.cliente.game.items.ItemFactory;
+import team.rpgterminal.cliente.game.items.ItemType;
 import team.rpgterminal.cliente.game.nonPlayablesCharacters.enemy.Enemy;
 import team.rpgterminal.cliente.game.nonPlayablesCharacters.enemy.EnemyType;
 import team.rpgterminal.cliente.game.playableCharacters.Player;
@@ -36,5 +38,16 @@ public class TesterPlayer {
         player.defend();
 
         player.attack(enemy);
+
+        player.listItems();
+
+        ItemFactory itemFactory = new ItemFactory();
+
+        player.addToInventory(itemFactory.createItem(ItemType.BASIC_AXE));
+        player.addToInventory(itemFactory.createItem(ItemType.BASIC_SHIELD));
+        player.addToInventory(itemFactory.createItem(ItemType.TORCH));
+        player.addToInventory(itemFactory.createItem(ItemType.STICK));
+
+        player.listItems();
     }
 }

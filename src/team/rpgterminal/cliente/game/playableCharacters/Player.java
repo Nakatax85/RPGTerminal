@@ -1,19 +1,25 @@
 package team.rpgterminal.cliente.game.playableCharacters;
 
 import team.rpgterminal.cliente.game.Destructible;
+import team.rpgterminal.cliente.game.MapZones;
 import team.rpgterminal.cliente.game.items.Item;
+import team.rpgterminal.cliente.game.items.ItemType;
 import team.rpgterminal.cliente.game.tools.RandomNumber;
+
+import java.util.ArrayList;
 
 public class Player implements Playable {
 
-    // TODO: List of itens that are loaded
-    // TODO: List of gear that is being used
+    /**
+     * Player properties
+     */
+    private ArrayList<Item> inventory = new ArrayList<>();
     private String name;
     private int health = 100;
     private boolean dead;
-    private int playerDamage = 5;
+    private int playerDamage = 1;
     private int causedDamage;
-    private int basicDefense;
+    private int basicDefense = 0;
 
     public Player(String name) {
         this.name = name;
@@ -78,7 +84,7 @@ public class Player implements Playable {
     /**
      * List what is on Player Zone
      */
-    public void lookAround() {
+    public void lookAround(MapZones zone) {
 
         // Comando que retorna lista de objectos a volta
 
@@ -96,13 +102,40 @@ public class Player implements Playable {
     /**
      * see Player inventory
      */
-    public void listItems() { }
+    public void listItems() {
+
+        if(inventory.size() == 0) {
+            System.out.println("You don't have anything on your inventory");
+            return;
+        }
+
+        for (int i = 0; i < inventory.size(); i++) {
+            System.out.println(inventory.get(i));
+        }
+
+    }
 
     /**
      * Interact with Item and set it to use
      * @param item
      */
-    public void useGear(Item item) { }
+    public void equipGear(Item item) {
+
+        if (item.getItemType() == ItemType.BASIC_AXE) {
+            playerDamage = playerDamage + item.getBonus();
+        }
+
+        if (item.getItemType() == ItemType.BASIC_SHIELD) {
+            basicDefense = basicDefense + item.getBonus();
+        }
+
+    }
+
+    public void addToInventory(Item item) {
+
+        inventory.add(item);
+
+    }
 
     public void setHealth(int health) {
         this.health = health;
