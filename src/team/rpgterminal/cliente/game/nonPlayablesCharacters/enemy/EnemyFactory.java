@@ -12,10 +12,10 @@ public class EnemyFactory {
 
 
     /**
-     *
+     * Creates a specified quantity of enemies, of a specified enemy type.
      * @param enemyType
      * @param enemyQuantity
-     * @return
+     * @return Enemy
      */
     public Enemy createEnemy(EnemyType enemyType, int enemyQuantity) {
         Enemy enemy = null;
@@ -24,18 +24,23 @@ public class EnemyFactory {
             switch (enemyType) {
                 case MONSTER:
                     enemy = new Enemy(EnemyType.MONSTER);
+                    getEnemyMessage(EnemyType.MONSTER);
                     break;
                 case DRAGON:
                     enemy = new Enemy(EnemyType.DRAGON);
+                    getEnemyMessage(EnemyType.DRAGON);
                     break;
                 case DWARF:
                     enemy = new Enemy(EnemyType.DWARF);
+                    getEnemyMessage(EnemyType.DWARF);
                     break;
                 case ELF:
                     enemy = new Enemy(EnemyType.ELF);
+                    getEnemyMessage(EnemyType.ELF);
                     break;
                 case MERCENARY:
                     enemy = new Enemy(EnemyType.MERCENARY);
+                    getEnemyMessage(EnemyType.MERCENARY);
                     break;
                 default:
                     System.out.println("There's no more enemies. Something bad really happened.");

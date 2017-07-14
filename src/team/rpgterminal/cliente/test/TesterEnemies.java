@@ -35,9 +35,6 @@ public class TesterEnemies {
         System.out.println("TESTING ENEMY FACTORY");
 
 
-            enemyFactory.createDwarf();
-            enemyFactory.createDragon();
-            enemyFactory.createElf();
 
     }
 }

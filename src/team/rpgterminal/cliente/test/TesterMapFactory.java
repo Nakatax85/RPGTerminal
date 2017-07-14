@@ -12,7 +12,7 @@ public class TesterMapFactory {
 
         MapFactory mapFactory = new MapFactory();
 
-        System.out.println(mapFactory.createMap(MapZones.HOME));
+       // System.out.println(mapFactory.createMap(MapZones.HOME));
 
     }
 

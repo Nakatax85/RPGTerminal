@@ -14,12 +14,12 @@ public class Map {
     private MapZones mapZones;
 
     private boolean mapBlocker;
-
+/*
     public Map(MapZones mapZones, ArrayList<Item> items, ArrayList<Enemy> enemies) {
         this.mapZones = mapZones;
         this.items = items;
         this.enemies = enemies;
 
-    }
+    }*/
 
 }

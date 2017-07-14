@@ -16,7 +16,7 @@ public class MapFactory {
         this.enemyFactory = new EnemyFactory();
         this.itemFactory = new ItemFactory();
     }
-
+/*
     public Map createMap(MapZones mapZones, HashMap<EnemyType, Integer> enemyHash, HashMap<ItemType, Integer> itemHash) {
 
         int iterator = 0;
@@ -34,6 +34,6 @@ public class MapFactory {
 
         return new Map(mapZones, enemyHash, itemHash);
 
-    }
+    }*/
 
 }

@@ -26,10 +26,10 @@ public class TesterPlayer {
         player.move(Player.Directions.WEST);
         System.out.println();
 
-        player.addToInventory(itemFactory.createItem(ItemType.BASIC_AXE));
+       /* player.addToInventory(itemFactory.createItem(ItemType.BASIC_AXE));
         player.addToInventory(itemFactory.createItem(ItemType.BASIC_SHIELD));
         player.addToInventory(itemFactory.createItem(ItemType.TORCH));
-        player.addToInventory(itemFactory.createItem(ItemType.CLOTH));
+        player.addToInventory(itemFactory.createItem(ItemType.CLOTH));*/
 
         System.out.println();
         player.listInventory();

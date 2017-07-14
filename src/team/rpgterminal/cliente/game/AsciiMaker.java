@@ -21,16 +21,16 @@ public class AsciiMaker {
         this.message = message;
     }
 
-    public String drawTitle() {
+    public void drawTitle() {
 
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics g = image.getGraphics();
-        g.setFont(new Font("SansSerif", Font.TRUETYPE_FONT, 20));
+        g.setFont(new Font("SansSerif", Font.TRUETYPE_FONT, 15));
 
         Graphics2D graphics = (Graphics2D) g;
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        graphics.drawString(message, 10, 20);
+        graphics.drawString(message, 5, 15);
 
         try {
             ImageIO.write(image, "png", new File("resources/ascii-art.png"));
@@ -38,11 +38,11 @@ public class AsciiMaker {
             System.err.println("ERROR:" + e.getMessage());
         }
 
-        StringBuilder sb = new StringBuilder();
         for (int y = 0; y < height; y++) {
+            StringBuilder sb = new StringBuilder();
             for (int x = 0; x < width; x++) {
 
-                sb.append(image.getRGB(x, y) == -16777216 ? " " : "0");
+                sb.append(image.getRGB(x, y) == -16777216 ? " " : ":");
 
             }
 
@@ -50,8 +50,8 @@ public class AsciiMaker {
                 continue;
             }
 
+            System.out.println(sb);
         }
-        return sb.toString();
     }
 
 }

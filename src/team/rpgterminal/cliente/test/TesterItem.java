@@ -5,7 +5,7 @@ import team.rpgterminal.cliente.game.items.ItemType;
 
 public class TesterItem {
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
 
         ItemFactory itemFactory = new ItemFactory();
 
@@ -19,5 +19,5 @@ public class TesterItem {
         System.out.println(itemFactory.createItem(ItemType.SCROLL));
         System.out.println(itemFactory.createItem(ItemType.SMALL_ROCK));
         System.out.println(itemFactory.createItem(ItemType.STICK));
-    }
+    }*/
 }
