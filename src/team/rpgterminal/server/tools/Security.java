@@ -1,5 +1,9 @@
 package team.rpgterminal.server.tools;
 
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * Security helper class that has some essential methods to validate hostname and port and a method to hash a password
  *
@@ -52,8 +56,6 @@ public final class Security {
     }
 
     /**
-     * Double encryption
-     *
      * Password will be encrypted using an encryption algorithm on the client side,
      * just sow it comes protected.
      *
@@ -63,10 +65,21 @@ public final class Security {
      * @param password
      * @return doubleHashedPassword
      */
-    public static String hashPassword(String password) {
+    public static String hashPassword(String password) throws IOException, NoSuchAlgorithmException {
 
-        return "Security";
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(password.getBytes());
 
+        byte byteData[] = md.digest();
+
+        StringBuffer hexString = new StringBuffer();
+        for (int i=0;i<byteData.length;i++) {
+            String hex = Integer.toHexString(0xff & byteData[i]);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
     }
 
 }
