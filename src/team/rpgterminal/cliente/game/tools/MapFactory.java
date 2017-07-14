@@ -76,7 +76,8 @@ public class MapFactory {
         Enemy[] enemies = new Enemy[numberOfEnemies];
 
         for (int i = 0; i < enemies.length; i++) {
-            enemies[i] = enemyFactory.createEnemy();
+            // TODO: THINK ABOUT SOMETHING DIFERENT
+            enemies[i] = enemyFactory.createDragon();
         }
 
         return enemies;

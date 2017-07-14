@@ -15,7 +15,6 @@ public class VillagerFactory {
      * It creates a villager of a specific type depending on a random number.
      * @return Villager - villager.
      */
-
     public Villager createVillager(){
         randomNumber = RandomNumber.generate(0,2);
 

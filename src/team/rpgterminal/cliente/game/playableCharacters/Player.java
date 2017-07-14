@@ -1,23 +1,29 @@
 package team.rpgterminal.cliente.game.playableCharacters;
 
 import team.rpgterminal.cliente.game.Destructible;
+import team.rpgterminal.cliente.game.MapZones;
 import team.rpgterminal.cliente.game.items.Item;
 import team.rpgterminal.cliente.game.tools.RandomNumber;
 
+import java.util.ArrayList;
+
 public class Player implements Playable {
 
-    // TODO: List of itens that are loaded
-    // TODO: List of gear that is being used
+    /**
+     * Player properties
+     */
+    private ArrayList<Item> inventory;
     private String name;
     private int health = 100;
     private boolean dead;
-    private int playerDamage = 5;
+    private int attackingPower = 1;
     private int causedDamage;
-    private int basicDefense;
+    private int basicDefense = 0;
 
     public Player(String name) {
         this.name = name;
         this.dead = false;
+        inventory = new ArrayList<>();
     }
 
     /**
@@ -26,13 +32,13 @@ public class Player implements Playable {
      *
      * @param destructible
      */
+    // TODO: será preciso aqui retonar INT com o valor que o dano causa para facilitar as classes nao terem que conhecer tanto umas das outras????
     public void attack(Destructible destructible) {
 
         if (!destructible.isDestroyed()) {
-
-            causedDamage = RandomNumber.generate(1, playerDamage);
+            causedDamage = RandomNumber.generate(1, attackingPower);
             System.out.println("You have attacked. Damage taken was: " + causedDamage);
-
+            return;
         } else {
             System.out.println("Enemy is already dead");
         }
@@ -40,16 +46,32 @@ public class Player implements Playable {
 
     /**
      *
-     * Player defend method from Destructible
+     * Player defends from de attacking power from the Destructibles
      *
      */
-    public void defend() {
+    public void defend(int powerToDefend) {
 
-        if (getHealth() <= 0) {
+        if (basicDefense >= powerToDefend) {
+            basicDefense = basicDefense - powerToDefend;
+            System.out.println("You were attacked with " + powerToDefend + " and you defended with success");
+            System.out.println("Your basic defense is now " + basicDefense);
+            return;
+        } else {
+            powerToDefend = powerToDefend - basicDefense;
+            basicDefense = 0;
+            health = health - powerToDefend;
+            if(health < 0) {
+                health = 0;
+            }
+            System.out.println("You were attacked with " + powerToDefend + " and your shield can not protect you anymore");
+            System.out.println("Your heath points are now " + health);
+        }
+
+        if (health <= 0) {
+            setDead(true);
             isDead();
             return;
         }
-        System.out.println("Defending...");
     }
 
     /**
@@ -60,17 +82,17 @@ public class Player implements Playable {
     public void move(Directions direction) {
 
         switch (direction) {
-            case FORWARD:
-                System.out.println("Player moved FORWARD\n");
+            case NORTH:
+                System.out.println("You moved NORTH");
                 break;
-            case BACK:
-                System.out.println("Player moved BACK\n");
+            case SOUTH:
+                System.out.println("You moved SOUTH");
                 break;
-            case LEFT:
-                System.out.println("Player moved LEFT\n");
+            case WEST:
+                System.out.println("You moved WEST");
                 break;
-            case RIGHT:
-                System.out.println("Player moved RIGHT\n");
+            case EAST:
+                System.out.println("You moved EAST");
                 break;
         }
     }
@@ -78,31 +100,89 @@ public class Player implements Playable {
     /**
      * List what is on Player Zone
      */
-    public void lookAround() {
-
+    public void lookAround(MapZones zone) {
         // Comando que retorna lista de objectos a volta
-
     }
 
     /**
      * Interact with Zone
      */
     public void interact() {
-
         // Recebe lista de lookAround para poder interagir
-
     }
 
     /**
-     * see Player inventory
+     * see Player inventory and gives the player the item index to use it on equipGear() method
      */
-    public void listItems() { }
+    public void listInventory() {
+        //TODO: verificar prints deste método
+
+        if(inventory.size() == 0) {
+            System.out.println("It looks like that you don't have anything on your inventory to show");
+            return;
+        }
+
+        for (int i = 0; i < inventory.size(); i++) {
+            System.out.println(inventory.get(i) + ". To equip this item press: EQUIP GEAR + INDEX: " + i);
+        }
+    }
 
     /**
      * Interact with Item and set it to use
+     * @param index
+     */
+    public void equipGear(int index) {
+
+        if(index <= inventory.size()) {
+            if (inventory.get(index).getItemType().isPossibleToEquip()) {
+                if(inventory.get(index).getItemType().isAttackItem()) {
+                    upgradeAttackingPower(index);
+                    return;
+                } else if (inventory.get(index).getItemType().isDefenseItem()) {
+                    upgradeBasicDefense(index);
+                    return;
+                }
+            } else {
+                System.out.println("Its not possible to equip " + inventory.get(index).toString());
+            }
+        }
+        System.out.println("Not a valid gear");
+    }
+
+    /**
+     *
+     * Updates player basicDefense value
+     *
+     * @param index ArrayList index value
+     */
+    private void upgradeBasicDefense(int index) {
+        basicDefense = basicDefense + inventory.get(index).getBonus();
+        System.out.println(inventory.get(index).toString() + " is equiped");
+        System.out.println("Your basic defense is now " + basicDefense);
+    }
+
+    /**
+     *
+     * Updates player attacking power value
+     *
+     * @param index ArrayList index value
+     */
+    private void upgradeAttackingPower(int index) {
+        attackingPower = attackingPower + inventory.get(index).getBonus();
+        System.out.println(inventory.get(index).toString() + " is equiped");
+        System.out.println("Your power attack is now up to " + attackingPower + " Health Points");
+    }
+
+    /**
+     *
+     * Adds an item to the player inventory
+     *
      * @param item
      */
-    public void useGear(Item item) { }
+    public void addToInventory(Item item) {
+        inventory.add(item);
+        System.out.println("Added: " + item + " to your inventory");
+    }
 
     public void setHealth(int health) {
         this.health = health;
@@ -137,9 +217,18 @@ public class Player implements Playable {
         return true;
     }
 
+    /**
+     *
+     * reset player stats and inventory when player is dead
+     *
+     */
     private void resetPlayer() {
         setHealth(100);
         setDead(false);
+        inventory.clear();
+
+        System.out.println("It looks like someone revive you, but unfortunately you lost all your gear and stats... " +
+                "Are you up for the challenge once again?");
     }
 
     /**
@@ -152,12 +241,18 @@ public class Player implements Playable {
     }
 
 
+    /**
+     *
+     * @return players properties
+     */
     @Override
     public String toString() {
-        return "Player information{" +
+        return "Player{" +
                 "name='" + name + '\'' +
                 ", health=" + health +
-                ", dead=" + dead +
+                ", attacking power: " + attackingPower +
+                ", basic defense: " + basicDefense +
+                ", inventory: " + inventory +
                 '}';
     }
 
@@ -167,15 +262,9 @@ public class Player implements Playable {
      *
      */
     public enum Directions {
-        FORWARD("forward"),
-        BACK("back"),
-        LEFT("left"),
-        RIGHT("right");
-
-        private String move;
-
-        Directions(String move) {
-            this.move = move;
-        }
+        NORTH,
+        SOUTH,
+        WEST,
+        EAST
     }
 }
