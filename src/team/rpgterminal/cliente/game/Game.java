@@ -8,7 +8,6 @@ import java.net.Socket;
  * Created by codecadet on 10/07/2017.
  */
 public class Game {
-
     private AsciiMaker asciiMaker = new AsciiMaker(200, 60, "DragonQuest");
 
     private Socket socket;
@@ -26,8 +25,6 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
 }
