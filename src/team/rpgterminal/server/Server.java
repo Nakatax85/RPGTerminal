@@ -16,8 +16,8 @@ import java.util.concurrent.Executors;
 public class Server {
 
     private ServerSocket serverSocket = null;
-    private Map<Integer, Client> clients = new HashMap<Integer, Client>();
-    private static long ID = 1;
+    private Map<Integer, Connection> clients = new HashMap<Integer, Connection>();
+    private static Integer ID = 1;
 
     public void launch(int port) {
 
@@ -40,19 +40,13 @@ public class Server {
                 socket = serverSocket.accept();
 
                 Executor exec = Executors.newCachedThreadPool();
-
-
-
-                exec.execute();
-
-                Thread.sleep(1000);
+                clients.put(ID, new Connection(socket));
+                exec.execute(clients.get(ID));
+                ID = ID + 1;
 
                 socket = null;
-
             }
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
