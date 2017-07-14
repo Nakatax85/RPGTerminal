@@ -21,7 +21,7 @@ public class AsciiMaker {
         this.message = message;
     }
 
-    public void drawTitle() {
+    public String drawTitle() {
 
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics g = image.getGraphics();
@@ -38,8 +38,8 @@ public class AsciiMaker {
             System.err.println("ERROR:" + e.getMessage());
         }
 
+        StringBuilder sb = new StringBuilder();
         for (int y = 0; y < height; y++) {
-            StringBuilder sb = new StringBuilder();
             for (int x = 0; x < width; x++) {
 
                 sb.append(image.getRGB(x, y) == -16777216 ? " " : "0");
@@ -50,8 +50,8 @@ public class AsciiMaker {
                 continue;
             }
 
-            System.out.println(sb);
         }
+        return sb.toString();
     }
 
 }

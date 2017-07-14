@@ -1,15 +1,20 @@
 package team.rpgterminal.server.tests;
 
+import team.rpgterminal.server.Server;
 import team.rpgterminal.server.tools.Security;
 
 public class TestSecurity {
 
     public static void main(String[] args) {
 
+        Server server = new Server();
+        server.launch(6969);
+
         TestSecurity test = new TestSecurity();
 
         test.assertCondition("Hostname is valid: ", test.testOne());
         test.assertCondition("Port is valid: ", test.testTwo());
+        test.assertCondition("Hash is valid: ", test.testThree());
 
     }
 
@@ -86,6 +91,18 @@ public class TestSecurity {
         if(!Security.validatePort("1000")) {
             return false;
         }
+
+        return true;
+    }
+
+    public boolean testThree() {
+
+        String hashedPass = Security.hashPassword("123456789");
+        if(!(hashedPass.equals(Security.hashPassword("123456789")))) {
+            return false;
+        }
+
+        // TODO: Test security of hashPassword
 
         return true;
     }

@@ -63,20 +63,26 @@ public final class Security {
      * it encrypts the hash of the password received again with a different encryption algorithm.
      *
      * @param password
-     * @return doubleHashedPassword
+     * @return hashedPassword
      */
-    public static String hashPassword(String password) throws IOException, NoSuchAlgorithmException {
-
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update(password.getBytes());
-
-        byte byteData[] = md.digest();
+    public static String hashPassword(String password) {
 
         StringBuffer hexString = new StringBuffer();
-        for (int i=0;i<byteData.length;i++) {
-            String hex = Integer.toHexString(0xff & byteData[i]);
-            if (hex.length() == 1) hexString.append('0');
-            hexString.append(hex);
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.reset();
+            md.update(password.getBytes());
+
+            byte byteData[] = md.digest();
+
+            for (byte aByteData : byteData) {
+                String hex = Integer.toHexString(0xff & aByteData);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+
+        } catch (NoSuchAlgorithmException e) {
+            System.err.println("ERROR: Not a valid algorithm...");
         }
 
         return hexString.toString();
