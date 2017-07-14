@@ -1,36 +1,22 @@
 package team.rpgterminal.cliente.game.items;
 
 public enum ItemType {
-    BASIC_SHIELD(true, false, true),
-    BASIC_AXE(true, true, false),
-    BREAD(false, false, false),
-    RUSTY_KNIFE(false, false, false),
-    STICK(false, false, false),
-    CLOTH(false, false, false),
-    SMALL_ROCK(false, false, false),
-    TORCH(false, false, false),
-    LIGHTED_TORCH(false, false, false),
-    SCROLL(false, false, false);
+    BASIC_SHIELD(KindOfItem.DEFENSE),
+    BASIC_AXE(KindOfItem.WEAPON),
+    BREAD(KindOfItem.HEALING),
+    RUSTY_KNIFE(KindOfItem.DEFAULT),
+    STICK(KindOfItem.DEFAULT),
+    CLOTH(KindOfItem.DEFAULT),
+    SMALL_ROCK(KindOfItem.DEFAULT),
+    TORCH(KindOfItem.DEFAULT),
+    LIGHTED_TORCH(KindOfItem.DEFAULT),
+    SCROLL(KindOfItem.DEFAULT);
 
-    private boolean isPossibleToEquip;
-    private boolean attackItem;
-    private boolean defenseItem;
+    private KindOfItem itemKind;
 
-    ItemType (boolean isPossibleToEquip, boolean attackItem, boolean defenseItem) {
-        this.isPossibleToEquip = isPossibleToEquip;
-        this.attackItem = attackItem;
-        this.defenseItem = defenseItem;
-    }
-
-    public boolean isPossibleToEquip() {
-        return isPossibleToEquip;
-    }
-
-    public boolean isAttackItem() {
-        return attackItem;
-    }
-
-    public boolean isDefenseItem() {
-        return defenseItem;
+    ItemType (KindOfItem itemKind) {
+        this.itemKind = itemKind;
     }
 }
+
+

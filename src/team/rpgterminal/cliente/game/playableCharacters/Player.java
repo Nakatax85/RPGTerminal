@@ -3,6 +3,7 @@ package team.rpgterminal.cliente.game.playableCharacters;
 import team.rpgterminal.cliente.game.Destructible;
 import team.rpgterminal.cliente.game.MapZones;
 import team.rpgterminal.cliente.game.items.Item;
+import team.rpgterminal.cliente.game.items.KindOfItem;
 import team.rpgterminal.cliente.game.tools.RandomNumber;
 
 import java.util.ArrayList;
@@ -27,7 +28,6 @@ public class Player implements Playable {
     }
 
     /**
-     *
      * Player attacks and sets a casedDamage to be accessed by the Game
      *
      * @param destructible
@@ -45,9 +45,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
      * Player defends from de attacking power from the Destructibles
-     *
      */
     public void defend(int powerToDefend) {
 
@@ -60,7 +58,7 @@ public class Player implements Playable {
             powerToDefend = powerToDefend - basicDefense;
             basicDefense = 0;
             health = health - powerToDefend;
-            if(health < 0) {
+            if (health < 0) {
                 health = 0;
             }
             System.out.println("You were attacked with " + powerToDefend + " and your shield can not protect you anymore");
@@ -114,10 +112,10 @@ public class Player implements Playable {
     /**
      * see Player inventory and gives the player the item index to use it on equipGear() method
      */
+    //TODO: verificar prints deste método
     public void listInventory() {
-        //TODO: verificar prints deste método
 
-        if(inventory.size() == 0) {
+        if (inventory.size() == 0) {
             System.out.println("It looks like that you don't have anything on your inventory to show");
             return;
         }
@@ -129,28 +127,33 @@ public class Player implements Playable {
 
     /**
      * Interact with Item and set it to use
+     *
      * @param index
      */
     public void equipGear(int index) {
 
-        if(index <= inventory.size()) {
-            if (inventory.get(index).getItemType().isPossibleToEquip()) {
-                if(inventory.get(index).getItemType().isAttackItem()) {
-                    upgradeAttackingPower(index);
-                    return;
-                } else if (inventory.get(index).getItemType().isDefenseItem()) {
-                    upgradeBasicDefense(index);
-                    return;
-                }
-            } else {
-                System.out.println("Its not possible to equip " + inventory.get(index).toString());
+        if (index <= inventory.size()) {
+            if (inventory.get(index).getItemKind() == KindOfItem.WEAPON) {
+                upgradeAttackingPower(index);
+                return;
             }
+
+            if (inventory.get(index).getItemKind() == KindOfItem.DEFENSE) {
+                upgradeBasicDefense(index);
+                return;
+            }
+
+            if (inventory.get(index).getItemKind() == KindOfItem.HEALING) {
+                upgradeHealthValue(index);
+                return;
+            }
+            System.out.println("Its not possible to use " + inventory.get(index).toString());
+            return;
         }
-        System.out.println("Not a valid gear");
+        System.out.println("Not a valid gear to wear");
     }
 
     /**
-     *
      * Updates player basicDefense value
      *
      * @param index ArrayList index value
@@ -162,7 +165,6 @@ public class Player implements Playable {
     }
 
     /**
-     *
      * Updates player attacking power value
      *
      * @param index ArrayList index value
@@ -174,7 +176,17 @@ public class Player implements Playable {
     }
 
     /**
+     * Updates player health value
      *
+     * @param index ArrayList index value
+     */
+    private void upgradeHealthValue(int index) {
+        health = health + inventory.get(index).getBonus();
+        System.out.println("You have been healed");
+        System.out.println("Your health is now " + health);
+    }
+
+    /**
      * Adds an item to the player inventory
      *
      * @param item
@@ -218,9 +230,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
      * reset player stats and inventory when player is dead
-     *
      */
     private void resetPlayer() {
         setHealth(100);
@@ -240,9 +250,7 @@ public class Player implements Playable {
         this.dead = dead;
     }
 
-
     /**
-     *
      * @return players properties
      */
     @Override
@@ -257,9 +265,7 @@ public class Player implements Playable {
     }
 
     /**
-     *
      * What directions are available for players to take
-     *
      */
     public enum Directions {
         NORTH,
