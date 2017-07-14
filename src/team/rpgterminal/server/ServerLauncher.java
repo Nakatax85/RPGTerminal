@@ -8,9 +8,9 @@ public class ServerLauncher {
     public static void main(String[] args) {
 
         if(args.length > 0) {
-            new Server().launch(args[0], Integer.parseInt(args[1]));
+            new Server().launch(Integer.parseInt(args[1]));
         } else {
-            System.out.println("Usage: java -jar RPGTerminalServer.jar [host] [port]");
+            System.out.println("Usage: java -jar RPGTerminalServer.jar [port]");
         }
     }
 

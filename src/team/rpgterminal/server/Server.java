@@ -5,6 +5,10 @@ import team.rpgterminal.cliente.ClientLauncher;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 /**
  *
@@ -12,11 +16,15 @@ import java.net.Socket;
 public class Server {
 
     private ServerSocket serverSocket = null;
+    private Map<Integer, Client> clients = new HashMap<Integer, Client>();
+    private static long ID = 1;
 
-    public void launch(String hostname, int port) {
+    public void launch(int port) {
 
         try {
             serverSocket = new ServerSocket(port);
+
+            startConnection();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,18 +36,31 @@ public class Server {
         Socket socket = null;
 
         try {
-            while((socket = serverSocket.accept()) == null) {
+            while(true) {
+                socket = serverSocket.accept();
+
+                Executor exec = Executors.newCachedThreadPool();
 
 
+
+                exec.execute();
+
+                Thread.sleep(1000);
+
+                socket = null;
 
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
     }
 
-    private void closeClientConnection(){
+    private void closeClientConnection() {
+
+
 
     }
 

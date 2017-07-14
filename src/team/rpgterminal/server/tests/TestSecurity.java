@@ -1,10 +1,14 @@
 package team.rpgterminal.server.tests;
 
+import team.rpgterminal.server.Server;
 import team.rpgterminal.server.tools.Security;
 
 public class TestSecurity {
 
     public static void main(String[] args) {
+
+        Server server = new Server();
+        server.launch(6969);
 
         TestSecurity test = new TestSecurity();
 
@@ -98,7 +102,7 @@ public class TestSecurity {
             return false;
         }
 
-
+        // TODO: Test security of hashPassword
 
         return true;
     }
