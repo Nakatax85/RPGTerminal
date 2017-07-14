@@ -5,7 +5,13 @@ package team.rpgterminal.cliente.game;
  */
 public class Game {
 
+   private AsciiMaker asciiMaker = new AsciiMaker(200,60,"DragonQuest");
 
+    public void start(){
+        asciiMaker.drawTitle();
+
+
+    }
 
 
 }
