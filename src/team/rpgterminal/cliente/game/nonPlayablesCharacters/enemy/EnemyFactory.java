@@ -10,41 +10,73 @@ import java.util.List;
  */
 public class EnemyFactory {
 
-    private int randomNumber;
+    private EnemyType enemyType = null;
     private Enemy enemy;
 
     /**
-     * It creates an enemy of random types.
-     * @return enemy
+     * It creates an enemy of type Dwarf.
+     *
+     * @return enemy - Dwarf.
      */
-    public Enemy createEnemy() {
-        EnemyType enemyType = null;
-        randomNumber = RandomNumber.generate(0,5);
-
-        switch (randomNumber) {
-            case 0:
-                enemy = new Enemy(enemyType = EnemyType.MONSTER);
-                System.out.println("A " + enemyType.getSymbol() + " appears.");
-                break;
-            case 1:
-                enemy = new Enemy(enemyType = EnemyType.DRAGON);
-                System.out.println("A " + enemyType.getSymbol() + " appears.");
-                break;
-            case 2:
-                enemy = new Enemy(enemyType = EnemyType.DWARF);
-                System.out.println("A " + enemyType.getSymbol() + " appears.");
-                break;
-            case 3:
-                enemy = new Enemy(enemyType = EnemyType.ELF);
-                System.out.println("An " + enemyType.getSymbol() + " appears.");
-                break;
-            case 4:
-                enemy = new Enemy(enemyType = EnemyType.MERCENARY);
-                System.out.println("A " + enemyType.getSymbol() + " appears.");
-                break;
-            default:
-                System.out.println("Something amazing will happen eventually");
-        }
+    public Enemy createDwarf() {
+        enemy = new Enemy(enemyType = EnemyType.DWARF);
+        getEnemyMessage(enemyType);
         return enemy;
     }
+
+    /**
+     * It creates an enemy of type Dragon.
+     *
+     * @return enemy - Dragon.
+     */
+    public Enemy createDragon() {
+        enemy = new Enemy(enemyType = EnemyType.DRAGON);
+        getEnemyMessage(enemyType);
+        return enemy;
+    }
+
+    /**
+     * It creates an enemy of type Dragon.
+     *
+     * @return enemy - Dragon.
+     */
+    public Enemy createMercenary() {
+        enemy = new Enemy(enemyType = EnemyType.MERCENARY);
+        getEnemyMessage(enemyType);
+        return enemy;
+    }
+
+    /**
+     * It creates an enemy of type Elf.
+     *
+     * @return enemy - Elf.
+     */
+    public Enemy createElf() {
+        enemy = new Enemy(enemyType = EnemyType.ELF);
+        getEnemyMessage(enemyType);
+        return enemy;
+    }
+
+    /**
+     * It creates an enemy of type Monster.
+     *
+     * @return enemy - Monster.
+     */
+
+    public Enemy createMonster() {
+        enemy = new Enemy(enemyType = EnemyType.MONSTER);
+        getEnemyMessage(enemyType);
+        return enemy;
+    }
+
+    /**
+     * It creates a intro message for a enemy type.
+     * @param enemyType
+     */
+    public void getEnemyMessage(EnemyType enemyType) {
+        System.out.println("A " + enemyType.getSymbol() + " appears.");
+        System.out.println("It has "+ enemyType.getAttackPower()+" points of attacking power and "+ enemyType.getShield()+ " points of shield.");
+    }
+
+
 }
