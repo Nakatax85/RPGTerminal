@@ -6,13 +6,13 @@ public class Item extends GameObjects {
 
     private String name;
     private int bonus;
-    private ItemType itemType;
+    private KindOfItem itemKind;
 
-    public Item(String name, int bonus, ItemType itemType){
+    public Item(String name, int bonus, KindOfItem itemKind){
         super();
         this.name = name;
         this.bonus = bonus;
-        this.itemType = itemType;
+        this.itemKind = itemKind;
     }
 
     public void setBonus(int bonus) {
@@ -23,12 +23,12 @@ public class Item extends GameObjects {
         return bonus;
     }
 
-    public ItemType getItemType() {
-        return itemType;
+    public KindOfItem getItemKind() {
+        return itemKind;
     }
 
     @Override
     public String toString() {
-        return "Item: " + name;
+        return name;
     }
 }
