@@ -19,6 +19,47 @@ public class Villager implements Destructible {
         return health;
     }
 
+    /**
+     * It creates a greeting.
+     */
+    public void villagerNormalGreeting(){
+        System.out.println("Hello kind one. I'm just a poor VILLAGER trying to survive out here.");
+    }
+
+    /**
+     * It creates a greeting.
+     */
+    public void villagerBraveGreeting(){
+        System.out.println("Hi there warrior. I don't know how can I help you, but you better move on or else...");
+    }
+
+    /**
+     * It creates a greeting.
+     */
+    public void villagerJokerGreeting(){
+        System.out.println("Are you talking to me??? I'm the VILLAGER who fcuked your mom! Just joking.");
+    }
+
+    /**
+     * It creates a villager reply.
+     */
+    public void villagerNormalReply(){
+        System.out.println("I wish I knew the answer to that question. I'm sorry I can't help you.");
+    }
+
+    /**
+     * It creates a villager reply.
+     */
+    public void villagerBraveReply(){
+        System.out.println("Maybe I could help you, but I'm afraid I'm just too busy to deal with you right now.");
+    }
+
+    /**
+     * It creates a villager reply.
+     */
+    public void villagerJokerReply(){
+        System.out.println("Bananas....");
+    }
 
     /**
      * It takes the number of hits from the health and verifies if villager is dead.
