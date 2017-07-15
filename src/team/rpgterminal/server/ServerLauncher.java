@@ -5,10 +5,13 @@ package team.rpgterminal.server;
  */
 public class ServerLauncher {
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        Server server;
         if(args.length > 0) {
-            new Server().launch(Integer.parseInt(args[1]));
+            server = new Server();
+            server.launch(6969);
+
         } else {
             System.out.println("Usage: java -jar RPGTerminalServer.jar [port]");
         }
