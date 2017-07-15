@@ -35,13 +35,19 @@ public class FileManager {
 
         BufferedReader bReader = new BufferedReader(fileReader);
 
-        String loadFile = bReader.readLine();
+        String loadFile;
+        String result = "";
+
+        while ((loadFile = bReader.readLine()) != null) {
+            result += loadFile + "\n";
+
+        }
 
         System.out.println("LOADING FILE");
 
         bReader.close();
 
-        return loadFile;
+        return result;
 
     }
 
