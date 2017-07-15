@@ -1,9 +1,15 @@
 package team.rpgterminal.cliente;
 
+import java.net.Socket;
+
 /**
  * Created by codecadet on 10/07/2017.
  */
 public class ClientLauncher {
+
+    private Socket clientSocket;
+
+
 
     public void login(){
 

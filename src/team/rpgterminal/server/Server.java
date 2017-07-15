@@ -52,8 +52,8 @@ public class Server {
 
     }
 
-    private void closeClientConnection() {
-
+    private void closeClientConnection() throws IOException {
+        serverSocket.close();
 
 
     }
