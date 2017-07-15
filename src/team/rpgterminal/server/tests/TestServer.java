@@ -1,9 +1,11 @@
 package team.rpgterminal.server.tests;
 
-import com.sun.security.ntlm.Client;
-import team.rpgterminal.cliente.ClientLauncher;
+
+import team.rpgterminal.cliente.Client;
+import team.rpgterminal.server.AltServer;
 import team.rpgterminal.server.Server;
-import team.rpgterminal.server.ServerLauncher;
+
+import java.io.IOException;
 
 /**
  * Created by NJSilva on 15/07/2017.
@@ -13,8 +15,9 @@ public class TestServer {
 
 
     public static void main(String[] args) {
+     Server server = new Server();
 
-
+        server.launch(5000);
 
     }
 }

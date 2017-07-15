@@ -1,5 +1,7 @@
 package team.rpgterminal.server;
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,24 +14,15 @@ import java.net.Socket;
  */
 public class AltServer {
 
-    private final int PORT_NUMBER = 6969;
     private ServerSocket serverSocket;
     private Socket clientSocket;
 
-    public AltServer() {
-
-    }
-
-    public void startConnection() throws IOException {
-        PrintWriter out;
-        BufferedReader in;
-
-        serverSocket = new ServerSocket(PORT_NUMBER);
+    public void startServer() throws IOException {
+        serverSocket=new ServerSocket();
         clientSocket = serverSocket.accept();
+        System.out.println("CONNECTION ESTABLISHED");
 
-        out = new PrintWriter(clientSocket.getOutputStream(),true);
-        in= new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
+        PrintWriter output = new PrintWriter(clientSocket.getOutputStream());
 
     }
 
