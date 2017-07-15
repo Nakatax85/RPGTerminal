@@ -8,18 +8,19 @@ import java.io.*;
 public class FileManager {
 
     private String FILE_PATH = "resources/";
+    private String FILE_EXTENSION = ".txt";
 
     public FileManager() {
 
     }
 
-    public void write(String file) throws IOException {
+    public void write(String file, String content) throws IOException {
 
-        FileWriter fileWriter = new FileWriter(FILE_PATH + file);
+        FileWriter fileWriter = new FileWriter(FILE_PATH + file + FILE_EXTENSION);
 
         BufferedWriter bWriter = new BufferedWriter(fileWriter);
 
-        bWriter.write(file);
+        bWriter.write(content);
 
         System.out.println("FILE SAVED");
 
@@ -30,7 +31,7 @@ public class FileManager {
 
     public String read(String file) throws IOException {
 
-        FileReader fileReader = new FileReader(FILE_PATH + file);
+        FileReader fileReader = new FileReader(FILE_PATH + file + FILE_EXTENSION);
 
         BufferedReader bReader = new BufferedReader(fileReader);
 
