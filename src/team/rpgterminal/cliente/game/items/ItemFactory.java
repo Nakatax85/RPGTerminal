@@ -1,56 +1,70 @@
 package team.rpgterminal.cliente.game.items;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemFactory {
 
-    private Item item = null;
-    private int numberOfItens;
+    private List<Item> itemList;
+
+    public ItemFactory() {
+        this.itemList = new ArrayList<>();
+    }
 
     /**
-     * @param itemType to create a new Item
-     * @return item
+     * @param itemType      The type of Item.
+     * @param quantity      The quantity of Items to create.
      */
-    public Item createItem(ItemType itemType, int numberOfItens) {
+    public void createItem(ItemType itemType, int quantity) {
 
-        for (int i = 0; i < numberOfItens; i++) {
+        for (int i = 0; i < quantity; i++) {
 
             switch (itemType) {
                 case BASIC_AXE:
-                    item = new Item("Basic Axe", 3, KindOfItem.WEAPON);
-                    return item;
+                    itemList.add(new Item("Basic Axe", 3, KindOfItem.WEAPON));
+                    break;
                 case BREAD:
-                    item = new Item("Bread", 50, KindOfItem.HEALING);
-                    return item;
+                    itemList.add(new Item("Bread", 3, KindOfItem.HEALING));
+                    break;
                 case CLOTH:
-                    item = new Item("Cloth", 0, KindOfItem.DEFAULT);
-                    return item;
+                    itemList.add(new Item("Cloth", 0, KindOfItem.DEFAULT));
+                    break;
                 case STICK:
-                    item = new Item("Stick", 0, KindOfItem.DEFAULT);
-                    return item;
+                    itemList.add(new Item("Stick", 0, KindOfItem.DEFAULT));
+                    break;
                 case TORCH:
-                    item = new Item("Torch", 0, KindOfItem.DEFAULT);
-                    return item;
+                    itemList.add(new Item("Torch", 0, KindOfItem.DEFAULT));
+                    break;
                 case SCROLL:
-                    item = new Item("Scroll", 0, KindOfItem.DEFAULT);
-                    return item;
+                    itemList.add(new Item("Scroll", 0, KindOfItem.DEFAULT));
+                    break;
                 case BASIC_SHIELD:
-                    item = new Item("Basic Shield", 2, KindOfItem.DEFENSE);
-                    return item;
+                    itemList.add(new Item("Basic Shield", 2, KindOfItem.DEFENSE));
+                    break;
                 case SMALL_ROCK:
-                    return new Item("Small Roch", 0, KindOfItem.DEFAULT);
+                    itemList.add(new Item("Small Roch", 0, KindOfItem.DEFAULT));
+                    break;
                 case RUSTY_KNIFE:
-                    item = new Item("Rusty Knife", 0, KindOfItem.DEFAULT);
-                    return item;
+                    itemList.add(new Item("Rusty Knife", 0, KindOfItem.DEFAULT));
+                    break;
                 case LIGHTED_TORCH:
-                    item = new Item("Lighted Torch", 0, KindOfItem.DEFAULT);
-                    return item;
+                    itemList.add(new Item("Lighted Torch", 0, KindOfItem.DEFAULT));
+                    break;
                 default:
                     System.out.println("Something went really wrong...");
                     break;
-            }
-        }
 
-        return null;
+            }
+
+        }
 
     }
 
+    /**
+     * Returns a list of Items.
+     * @return          Returns the list of Items created.
+     */
+    public List<Item> getItemList() {
+        return itemList;
+    }
 }

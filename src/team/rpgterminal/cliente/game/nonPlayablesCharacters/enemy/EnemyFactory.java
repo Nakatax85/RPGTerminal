@@ -1,63 +1,57 @@
 package team.rpgterminal.cliente.game.nonPlayablesCharacters.enemy;
 
-import team.rpgterminal.cliente.game.tools.RandomNumber;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by codecadet on 11/07/2017.
- */
 public class EnemyFactory {
 
+    private List<Enemy> enemyList;
+
+    public EnemyFactory() {
+        this.enemyList = new ArrayList<>();
+
+    }
 
     /**
      * Creates a specified quantity of enemies, of a specified enemy type.
-     * @param enemyType
-     * @param enemyQuantity
-     * @return Enemy
+     * @param enemyType         The type of Enemy.
+     * @param quantity          The quantity of Enemies to create.
      */
-    public Enemy createEnemy(EnemyType enemyType, int enemyQuantity) {
-        Enemy enemy = null;
+    public void createEnemy(EnemyType enemyType, int quantity) {
 
-        for (int i = 0; i < enemyQuantity; i++) {
+        for (int i = 0; i < quantity; i++) {
+
             switch (enemyType) {
                 case MONSTER:
-                    enemy = new Enemy(EnemyType.MONSTER);
-                    getEnemyMessage(EnemyType.MONSTER);
+                    enemyList.add(new Enemy(EnemyType.MONSTER, 7, 2, 7));
                     break;
                 case DRAGON:
-                    enemy = new Enemy(EnemyType.DRAGON);
-                    getEnemyMessage(EnemyType.DRAGON);
+                    enemyList.add(new Enemy(EnemyType.DRAGON, 12,12,16));
                     break;
                 case DWARF:
-                    enemy = new Enemy(EnemyType.DWARF);
-                    getEnemyMessage(EnemyType.DWARF);
+                    enemyList.add(new Enemy(EnemyType.DWARF,5,1,3));
                     break;
                 case ELF:
-                    enemy = new Enemy(EnemyType.ELF);
-                    getEnemyMessage(EnemyType.ELF);
+                    enemyList.add(new Enemy(EnemyType.ELF,9,8,10));
                     break;
                 case MERCENARY:
-                    enemy = new Enemy(EnemyType.MERCENARY);
-                    getEnemyMessage(EnemyType.MERCENARY);
+                    enemyList.add(new Enemy(EnemyType.MERCENARY,8,10,5));
                     break;
                 default:
-                    System.out.println("There's no more enemies. Something bad really happened.");
+                    System.err.println("Something really bad happened.");
+
             }
+
         }
-        return enemy;
+
     }
 
     /**
-     * It creates a intro message for a enemy type.
-     *
-     * @param enemyType
+     * Returns a List of Enemies.
+     * @return      Returns the list of Enemies created.
      */
-    public void getEnemyMessage(EnemyType enemyType) {
-        System.out.println("A " + enemyType.getSymbol() + " appears.");
-        System.out.println("It has " + enemyType.getAttackPower() + " points of attacking power and " + enemyType.getShield() + " points of shield.");
+    public List<Enemy> getEnemyList() {
+        return enemyList;
     }
-
 
 }

@@ -8,9 +8,7 @@ public class GameObjects implements Destructible{
 
 
     @Override
-    public int hit(int attackPower) {
-        return 0;
-    }
+    public void takeHit(int attackPower) {}
 
     @Override
     public boolean isDestroyed() {

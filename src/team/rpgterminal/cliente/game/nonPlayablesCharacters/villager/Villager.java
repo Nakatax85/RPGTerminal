@@ -88,22 +88,25 @@ public class Villager implements Destructible {
 
     /**
      * Mehtod that hits the villager with an amount of attacking power
-     * @param attackPower
+     * @param playerAttackPower
      * @return int - attackPower
      */
     @Override
-    public int hit(int attackPower) {
-        takeHealth(attackPower);
-        return attackPower;
+    public void takeHit(int playerAttackPower) {
+        if (health <= 0) {
+            return;
+        }
+
+        health -= playerAttackPower;
     }
 
     /**
-     * It returns true all the time. It means the villager is destroyed.
+     * Is the villager dead?
      * @return boolean
      */
     @Override
     public boolean isDestroyed() {
-        return true;
+        return health <= 0;
     }
 
 
