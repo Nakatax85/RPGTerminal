@@ -8,7 +8,8 @@ public enum EnemyType {
     DRAGON("DRAGON"),
     DWARF("DWARF"),
     ELF("ELF"),
-    MERCENARY("MERCENARY");
+    MERCENARY("MERCENARY"),
+    TROLL("TROLL");
 
     private String name;
 
