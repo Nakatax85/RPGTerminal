@@ -1,5 +1,7 @@
 package team.rpgterminal.cliente.game;
 
+import team.rpgterminal.cliente.game.tools.Map;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;

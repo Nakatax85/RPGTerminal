@@ -17,75 +17,39 @@ public class Enemy implements Destructible {
      * @param enemyType
      */
 
-    public Enemy(EnemyType enemyType) {
+    public Enemy(EnemyType enemyType, int health, int shield, int attackPower) {
         this.enemyType = enemyType;
-        health = enemyType.getMaxHits();
-        shield = enemyType.getShield();
-        attackPower = enemyType.getAttackPower();
+        this.health = health;
+        this.shield = shield;
+        this.attackPower = attackPower;
     }
 
     /**
      * It calls the method that prints out an attack message and causes damage to players.
      */
-    public void attack() {
-        if (enemyType == null) {
-            System.out.println("The enemy you seek does not exist.");
-            return;
-        }
-        getAttackMessage();
-        damage();
-    }
-
-    /**
-     * It prints out an attack message from a specific enemy type, with a specific attack power.
-     */
-
-    public void getAttackMessage() {
-        System.out.println(enemyType.getSymbol() + " has attacked you, causing you " + enemyType.getAttackPower() + " damage points.");
-    }
-
-    /**
-     * It prints out a defense message.
-     */
-
-    public void getDefendMessage() {
-        System.out.println(enemyType.getSymbol() + " defended your attack, using its shield.");
+    public int attack() {
+        return attackPower;
     }
 
     /**
      * It calls the method that prints a defense message and takes health from the enemy.
      * It also verifies if the shield has been destroyed or not and causes damage to the enemy if it is destroyed.
      */
-    public void defend() {
+    private void defend(int playerAttackPower) {
 
         if (!isDestroyed()) {
-            shield -= hit(4);
-            if (shield > 0) {
-                getDefendMessage();
-                return;
+            shield -= playerAttackPower;
+            if (shield <= 0) {
+                takeHit(Math.abs(shield));
+
             }
-            takeHealth(Math.abs(shield));
-            System.out.println(enemyType.getSymbol() + " has suffered damage. It currently has " + getHealth() + " health points");
+
         }
+
     }
 
     /**
-     * It takes health from the enemy and verifies if the enemy has been destroyed.
-     * @param hits
-     */
-
-    public void takeHealth(int hits) {
-        this.health -= hits;
-
-        if (health <= 0) {
-            isDestroyed();
-            health = 0;
-            System.out.println(enemyType.getSymbol() + " is dead.");
-        }
-    }
-
-    /**
-     * It shows the current health the enemy has.
+     * It shows the current health of the enemy.
      * @return int health
      */
 
@@ -94,30 +58,47 @@ public class Enemy implements Destructible {
     }
 
     /**
-     *
-     * @param attackPower
-     * @return int attackPower
+     * It shows the current shield of the enemy.
+     * @return int shield
      */
-    @Override
-    public int hit(int attackPower) {
+    public int getShield() {
+        return shield;
+    }
+
+    /**
+     * It shows the amount of attacking power the enemy has.
+     * @return
+     */
+    public int getAttackPower() {
         return attackPower;
     }
 
     /**
-     * It verifies if enemy is dead.
+     * Represents the players incoming damage to the enemy.
+     * @param playerAttackPower
+     */
+    @Override
+    public void takeHit(int playerAttackPower) {
+        if (health <= 0) {
+            return;
+        }
+
+        if (shield > 0) {
+            defend(playerAttackPower);
+            return;
+        }
+
+        health -= playerAttackPower;
+
+    }
+
+    /**
+     * It verifies if the enemy is dead.
      * @return boolean
      */
     @Override
     public boolean isDestroyed() {
-        return getHealth() < 1 ? true : false;
-    }
-
-    /**
-     * It causes the amount of damage equal to the specific enemy type attacking power.
-     * @return
-     */
-    public int damage() {
-        return enemyType.getAttackPower();
+        return health <= 0;
     }
 
     @Override
@@ -129,4 +110,5 @@ public class Enemy implements Destructible {
                 ", attackPower=" + attackPower +
                 '}';
     }
+
 }

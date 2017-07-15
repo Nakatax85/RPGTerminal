@@ -1,9 +1,9 @@
 package team.rpgterminal.cliente.game.playableCharacters;
 
 import team.rpgterminal.cliente.game.Destructible;
-import team.rpgterminal.cliente.game.MapZones;
 import team.rpgterminal.cliente.game.items.Item;
 import team.rpgterminal.cliente.game.items.KindOfItem;
+import team.rpgterminal.cliente.game.tools.MapZones;
 import team.rpgterminal.cliente.game.tools.RandomNumber;
 
 import java.util.ArrayList;

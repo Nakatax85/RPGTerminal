@@ -5,6 +5,6 @@ package team.rpgterminal.cliente.game;
  */
 public interface Destructible {
 
-    int hit(int attackPower);
+    void takeHit(int attackPower);
     boolean isDestroyed();
 }

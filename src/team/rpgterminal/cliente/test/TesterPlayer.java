@@ -13,7 +13,7 @@ public class TesterPlayer {
     public static void main(String[] args) {
 
         Player player = new Player("Mário");
-        Enemy enemy = new Enemy(EnemyType.DRAGON);
+        Enemy enemy = new Enemy(EnemyType.DRAGON, 5,5,5);
         ItemFactory itemFactory = new ItemFactory();
 
 

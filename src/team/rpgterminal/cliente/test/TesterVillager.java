@@ -20,7 +20,7 @@ public class TesterVillager {
 
         System.out.println("TESTING VILLAGERS");
 
-        villager.hit(2);
+        //villager.hit(2);
 
         System.out.println();
         System.out.println("TESTING VILLAGER FACTORY");

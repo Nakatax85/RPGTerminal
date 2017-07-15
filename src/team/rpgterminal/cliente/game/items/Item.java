@@ -15,16 +15,16 @@ public class Item extends GameObjects {
         this.itemKind = itemKind;
     }
 
-    public void setBonus(int bonus) {
-        this.bonus = bonus;
-    }
-
     public int getBonus() {
         return bonus;
     }
 
     public KindOfItem getItemKind() {
         return itemKind;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

@@ -105,6 +105,8 @@ Icon
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+.classpath
+.project
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -135,3 +137,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/macos,windows,intellij
+/bin/
