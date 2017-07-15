@@ -1,6 +1,7 @@
 package team.rpgterminal.cliente.game.nonPlayablesCharacters.enemy;
 
 import team.rpgterminal.cliente.game.Destructible;
+import team.rpgterminal.cliente.game.playableCharacters.Player;
 
 /**
  * Created by codecadet on 10/07/2017.
@@ -27,8 +28,9 @@ public class Enemy implements Destructible {
     /**
      * It calls the method that prints out an attack message and causes damage to players.
      */
-    public int attack() {
-        return attackPower;
+    public void attack(Player player) {
+        player.setHealth(player.getHealth() - attackPower);
+
     }
 
     /**

@@ -48,6 +48,5 @@ public class TesterPlayer {
         player.attack(enemy);
         System.out.println("DEPOISSS");
 
-        player.defend(10288);
     }
 }
