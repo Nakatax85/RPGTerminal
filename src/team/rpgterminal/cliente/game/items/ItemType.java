@@ -10,7 +10,8 @@ public enum ItemType {
     SMALL_ROCK(KindOfItem.DEFAULT),
     TORCH(KindOfItem.DEFAULT),
     LIGHTED_TORCH(KindOfItem.DEFAULT),
-    SCROLL(KindOfItem.DEFAULT);
+    SCROLL(KindOfItem.DEFAULT),
+    PILE_OF_LEAVES(KindOfItem.DEFAULT);
 
     private KindOfItem itemKind;
 

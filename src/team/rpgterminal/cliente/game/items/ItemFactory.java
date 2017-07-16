@@ -50,6 +50,9 @@ public class ItemFactory {
                 case LIGHTED_TORCH:
                     itemList.add(new Item("Lighted Torch", 0, KindOfItem.DEFAULT));
                     break;
+                case PILE_OF_LEAVES:
+                    itemList.add(new Item("Pile of Leaves", 0, KindOfItem.DEFAULT));
+                    break;
                 default:
                     System.out.println("Something went really wrong...");
                     break;

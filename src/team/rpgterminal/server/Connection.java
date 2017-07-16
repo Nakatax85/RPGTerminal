@@ -19,7 +19,7 @@ public class Connection implements Runnable {
     @Override
     public void run() {
 
-        game.start();
+        //game.start();
 
     }
 }
