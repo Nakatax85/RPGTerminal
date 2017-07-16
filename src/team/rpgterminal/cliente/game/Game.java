@@ -192,14 +192,4 @@ public class Game {
         System.out.println(mapForest);
     }
 
-    public void drawTitle(){
-        OutputStream outputStream = null;
-        try {
-            outputStream = this.socket.getOutputStream();
-           // outputStream.write(asciiMaker.drawTitle());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
