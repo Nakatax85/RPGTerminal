@@ -1,0 +1,6 @@
+Enemies:
+ELF:2
+DWARF:1
+
+Items:
+BREAD:2
