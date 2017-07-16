@@ -25,6 +25,7 @@ public class Server {
             serverSocket = new ServerSocket(port);
 
             startConnection();
+            System.out.println("SERVER CONNECTED");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,6 +39,7 @@ public class Server {
         try {
             while(true) {
                 socket = serverSocket.accept();
+                System.out.println("CONNECTION LISTENING");
 
                 Executor exec = Executors.newCachedThreadPool();
                 clients.put(ID, new Connection(socket));
@@ -52,8 +54,8 @@ public class Server {
 
     }
 
-    private void closeClientConnection() {
-
+    private void closeClientConnection() throws IOException {
+        serverSocket.close();
 
 
     }
