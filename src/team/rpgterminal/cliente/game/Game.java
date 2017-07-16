@@ -10,8 +10,7 @@ import team.rpgterminal.cliente.game.tools.MapFactory;
 import team.rpgterminal.cliente.game.tools.MapZones;
 import team.rpgterminal.server.tools.SplitCommands;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -31,6 +30,8 @@ public class Game {
     private Map mapForest;
     private Map mapTreeOfLife;
     private SplitCommands splitCommands;
+    private StoryLine storyLine;
+    private SystemMessages systemMessages;
     private Player p1;
 
     public Game(Socket socket) {
@@ -38,17 +39,20 @@ public class Game {
     }
 
     public Game() {
+        storyLine = new StoryLine();
+        systemMessages = new SystemMessages();
+        splitCommands = new SplitCommands();
+        p1 = new Player("Whatever");
     }
 
-    public void start(Player p1) {
+    public void start() {
         asciiMaker.drawTitle();
 
         createHome();
+        storyLine.welcomeGameMessage();
+        systemMessages.usernameMessage();
 
-        System.out.println("\n\nWelcome to the first chapter of DragonQuest!\n" +
-                "You will lear the basics and after words you can continue this journey all by your self.");
-        System.out.println("\nYou are at home. You can be teleported here anywhere you want. Just type: tp Home");
-        System.out.println("You only have one way possible from this point. Type south to exit Home");
+
 
         //TODO: MISSION
 
@@ -129,7 +133,7 @@ public class Game {
         itemList.put(ItemType.BASIC_AXE, 5);
 
         mapTreeOfLife = mapFactory.createMap(MapZones.HOME, enemyList, itemList);
-        System.out.println(mapTreeOfLife);
+       // System.out.println(mapTreeOfLife);
     }
 
     private void createCataratFalls() {
@@ -142,7 +146,7 @@ public class Game {
         itemList.put(ItemType.SCROLL, 1);
 
         mapTreeOfLife = mapFactory.createMap(MapZones.HOME, enemyList, itemList);
-        System.out.println(mapTreeOfLife);
+       // System.out.println(mapTreeOfLife);
     }
 
     private void createTreeOfLife() {
@@ -155,7 +159,7 @@ public class Game {
         itemList.put(ItemType.BASIC_SHIELD, 5);
 
         mapTreeOfLife = mapFactory.createMap(MapZones.HOME, enemyList, itemList);
-        System.out.println(mapTreeOfLife);
+        //System.out.println(mapTreeOfLife);
     }
 
     private void createHome() {
@@ -168,7 +172,7 @@ public class Game {
         itemList.put(ItemType.BASIC_AXE, 1);
 
         mapHome = mapFactory.createMap(MapZones.HOME, enemyList, itemList);
-        System.out.println(mapHome);
+       // System.out.println(mapHome);
     }
 
     private void createForest() {
@@ -189,7 +193,7 @@ public class Game {
 
         mapForest = mapFactory.createMap(MapZones.HOME, enemyList, itemList);
 
-        System.out.println(mapForest);
+       // System.out.println(mapForest);
     }
 
 }

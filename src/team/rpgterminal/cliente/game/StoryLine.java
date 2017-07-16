@@ -23,7 +23,10 @@ public class StoryLine {
         return storyMessage = "\n This is your safe place. At home you can start your adventure knowing that no enemies will surprise attack you.\n" +
                 "In the world of DragonQuest you can become a truly great warrior.\n" +
                 "The commands for moving around the map are: north south east west\n" +
-                "You will encounter many items along the way to help your quest, the commands to interact with them are: ";
+                "You will encounter many items along the way to help your quest, the commands to interact with them is: pick \n" +
+                "In the DragonQuest World there's many ways to move and to interact with the environment. If you need to know useful commands along the way, just type man to get the manual page.\n" +
+                "\n" +
+                "There's only one possible exit: south";
     }
 
 }

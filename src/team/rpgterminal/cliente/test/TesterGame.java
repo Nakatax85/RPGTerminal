@@ -15,7 +15,7 @@ public class TesterGame{
         Player p1 = new Player("Mário");
         Game game = new Game();
 
-        game.start(p1);
+        game.start();
 
     }
 }

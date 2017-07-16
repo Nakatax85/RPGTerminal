@@ -15,7 +15,8 @@ public enum PlayerCommands {
     INVENTORY("inv"),
     ATTACK("attack"),
     DEFEND("defend"),
-    INTERACT("interact");
+    INTERACT("interact"),
+    MAN("man");
 
     private String command;
 
@@ -56,6 +57,9 @@ public enum PlayerCommands {
 
             case "interact":
                 return INTERACT;
+
+            case "man":
+                return MAN;
 
         }
 
