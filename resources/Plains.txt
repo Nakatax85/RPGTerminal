@@ -1,3 +1,6 @@
-EnemyType.ELF:2
-EnemyType.DWARF:1
-ItemType.BREAD:2
+Enemies:
+ELF:2
+DWARF:1
+
+Items:
+BREAD:2
