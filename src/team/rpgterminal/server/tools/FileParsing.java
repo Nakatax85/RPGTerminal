@@ -7,20 +7,21 @@ import java.util.HashMap;
 
 public class FileParsing {
 
-    public void parse(String file) {
+    HashMap<EnemyType, Integer> enemyHashMap;
+    HashMap<ItemType, Integer> itemHashMap;
 
-        HashMap<EnemyType, Integer> enemyHashMap = new HashMap<>();
-        HashMap<ItemType, Integer> itemHashMap = new HashMap<>();
+    public FileParsing() {
+        this.enemyHashMap = new HashMap<>();
+        this.itemHashMap = new HashMap<>();
+    }
+
+    public void parse(String file) {
 
         String[] phrases;
         String[] splitter;
 
         EnemyType enemyType;
         ItemType itemType;
-
-        if (file.split(":").equals("") && (file.trim().equals(" "))) {
-            return;
-        }
 
         phrases = file.split("\n");
 
@@ -31,23 +32,18 @@ public class FileParsing {
             enemyType = transformEnemy(splitter[0]);
             itemType = transformItem(splitter[0]);
 
-            if (enemyType == null) {
-                System.out.println("No enemy with that name: " + splitter[0]);
-
-            } else {
+            if (enemyType != null) {
                 enemyHashMap.put(enemyType, Integer.parseInt(splitter[1]));
 
             }
 
-            if(itemType == null) {
-                System.out.println("No item with that name: " + splitter[0]);
-            } else {
+            if(itemType != null) {
                 itemHashMap.put(itemType, Integer.parseInt(splitter[1]));
             }
 
-            System.out.println("Enemy HashMap: " + enemyHashMap.toString() + " Item HashMap: " + itemHashMap.toString());
-
         }
+
+        System.out.println("Enemy HashMap: " + enemyHashMap.toString() + " Item HashMap: " + itemHashMap.toString());
 
     }
 
@@ -55,7 +51,7 @@ public class FileParsing {
 
         for (EnemyType it : EnemyType.values()) {
             if (it.name().equals(enemySplit)) {
-                return it;
+                return EnemyType.valueOf(enemySplit);
 
             }
 
@@ -69,7 +65,7 @@ public class FileParsing {
 
         for (ItemType it : ItemType.values()) {
             if (it.name().equals(itemSplit)) {
-                return it;
+                return ItemType.valueOf(itemSplit);
 
             }
 
@@ -77,6 +73,14 @@ public class FileParsing {
 
         return null;
 
+    }
+
+    public HashMap<EnemyType, Integer> getEnemyHashMap() {
+        return enemyHashMap;
+    }
+
+    public HashMap<ItemType, Integer> getItemHashMap() {
+        return itemHashMap;
     }
 
 }

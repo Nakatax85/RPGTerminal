@@ -1,5 +1,7 @@
 package team.rpgterminal.cliente.game.items;
 
+import team.rpgterminal.cliente.game.nonPlayablesCharacters.enemy.EnemyType;
+
 public enum ItemType {
     BASIC_SHIELD(KindOfItem.DEFENSE),
     BASIC_AXE(KindOfItem.WEAPON),
@@ -17,6 +19,21 @@ public enum ItemType {
     ItemType (KindOfItem itemKind) {
         this.itemKind = itemKind;
     }
+
+    public ItemType whichItem(String itemType) {
+
+        for (ItemType it : ItemType.values()) {
+            if (it.name().equals(itemType)) {
+                return ItemType.valueOf(itemType);
+
+            }
+
+        }
+
+        return null;
+
+    }
+
 }
 
 
