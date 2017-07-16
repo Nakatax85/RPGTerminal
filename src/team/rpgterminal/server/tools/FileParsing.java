@@ -5,9 +5,6 @@ import team.rpgterminal.cliente.game.nonPlayablesCharacters.enemy.EnemyType;
 
 import java.util.HashMap;
 
-/**
- * Created by oem on 16-07-2017.
- */
 public class FileParsing {
 
     public void parse(String file) {
@@ -28,7 +25,7 @@ public class FileParsing {
         phrases = file.split("\n");
 
         for (int i = 0; i < phrases.length; i++) {
-            
+
             splitter = phrases[i].split(":");
 
             enemyType = transformEnemy(splitter[0]);
