@@ -37,6 +37,9 @@ public class EnemyFactory {
                 case MERCENARY:
                     enemyList.add(new Enemy(EnemyType.MERCENARY,8,10,5));
                     break;
+                case TROLL:
+                    enemyList.add(new Enemy(EnemyType.TROLL,8,10,5));
+                    break;
                 default:
                     System.err.println("Something really bad happened.");
 

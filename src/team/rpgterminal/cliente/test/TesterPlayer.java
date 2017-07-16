@@ -16,7 +16,7 @@ public class TesterPlayer {
         Enemy enemy = new Enemy(EnemyType.DRAGON, 5,5,5);
         ItemFactory itemFactory = new ItemFactory();
 
-
+/*
         player.move(Player.Directions.EAST);
         System.out.println();
         player.move(Player.Directions.NORTH);
@@ -25,7 +25,7 @@ public class TesterPlayer {
         System.out.println();
         player.move(Player.Directions.WEST);
         System.out.println();
-
+*/
        /* player.addToInventory(itemFactory.createItem(ItemType.BASIC_AXE));
         player.addToInventory(itemFactory.createItem(ItemType.BASIC_SHIELD));
         player.addToInventory(itemFactory.createItem(ItemType.TORCH));

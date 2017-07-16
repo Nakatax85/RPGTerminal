@@ -245,22 +245,23 @@ public class Player implements Playable {
      *
      * @param direction where player can move
      */
-    public void move(Directions direction) {
-
+    public void move(String direction) {
         switch (direction) {
-            case NORTH:
+            case "north":
                 System.out.println("You moved NORTH");
                 break;
-            case SOUTH:
+            case "south":
                 System.out.println("You moved SOUTH");
                 break;
-            case WEST:
+            case "west":
                 System.out.println("You moved WEST");
                 break;
-            case EAST:
+            case "east":
                 System.out.println("You moved EAST");
                 break;
-                
+            default:
+                System.out.println("Not a valid direction");
+                break;
         }
 
     }
@@ -269,9 +270,15 @@ public class Player implements Playable {
      * What directions are available for players to take
      */
     public enum Directions {
-        NORTH,
-        SOUTH,
-        WEST,
-        EAST
+        NORTH("north"),
+        SOUTH("south"),
+        WEST("west"),
+        EAST("east");
+
+        private String direction;
+
+        Directions (String direction) {
+            this.direction = direction;
+        }
     }
 }

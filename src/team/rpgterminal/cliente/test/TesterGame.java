@@ -1,6 +1,7 @@
 package team.rpgterminal.cliente.test;
 
 import team.rpgterminal.cliente.game.Game;
+import team.rpgterminal.cliente.game.playableCharacters.Player;
 
 import java.net.Socket;
 
@@ -10,6 +11,8 @@ import java.net.Socket;
 public class TesterGame{
 
     public static void main(String[] args) {
+
+        Player p1 = new Player("Mário");
         Game game = new Game();
 
         game.start();

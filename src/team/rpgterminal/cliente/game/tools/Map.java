@@ -12,7 +12,7 @@ public class Map {
     private List<Item> items;
     private List<Enemy> enemies;
 
-    private boolean mapBlocker;
+    private boolean mapBlocker = true;
 
     public Map(MapZones mapZones, List<Enemy> enemies, List<Item> items) {
         this.mapZones = mapZones;
